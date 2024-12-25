@@ -1,0 +1,26 @@
+spring.cloud.stream:
+  function:
+    definition:manupulatename
+  bindings:
+    manupulatename-in-0:
+      destination: RAMPAL2
+    manupulatename-out-0:
+      destination: OMPAL2
+  kafka:
+    bindings:
+      manupulatename-in-0:
+        consumer:
+          configuration:
+            spring.json.trusted.packages: "*"
+            value:
+              deserializer: org.apache.kafka.common.serialization.StringSerializer
+    manupulatename-out-0:
+      consumer:
+        configuration:
+          spring.json.trusted.packages: "*"
+          value:
+            serializer: org.apache.kafka.common.serialization.StringSerializerr
+    binder:
+      broker:
+        - localhost:9092
+
